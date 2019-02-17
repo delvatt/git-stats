@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+# Please replace above line to proper path to your shell env.
 
 set -e
+unset GREP_OPTIONS
 
 files_pattern=$1
 
@@ -20,6 +22,7 @@ function commit_description {
 
 function lines_count {
   git ls-tree -r $rev |
+  grep "$files_pattern" |
   awk '{print $3}' |
   xargs git show |
   wc -l
