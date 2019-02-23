@@ -6,6 +6,8 @@ Make sure the script's shebang points to your correct shell env.
 
 **With stats.sh at the root of a git repo:**
 
-`$ chmod u+x ./stats.sh` and then
+`$ chmod u+x ./stats.sh` 
+
+and then
 
 `$ ./stats.sh FILE_FILTER_PATTERN`

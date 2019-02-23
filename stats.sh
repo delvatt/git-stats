@@ -4,12 +4,23 @@
 set -e
 unset GREP_OPTIONS
 
-files_pattern=$1
+repo_dir=$1
+files_pattern=$2
 
 function main {
+  set_repo_dir
   for rev in `revisions`; do
     echo "`lines_count` `commit_description`"
   done
+}
+
+function set_repo_dir {
+  if [[ $repo_dir =~ ^\'.*\/$ ]]; then
+     repo_dir=$repo_dir.git
+  else
+     repo_dir=$repo_dir/.git
+  fi
+  export GIT_DIR=$repo_dir
 }
 
 function revisions {
