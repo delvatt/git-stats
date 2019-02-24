@@ -15,12 +15,10 @@ function main {
 }
 
 function set_repo_dir {
-  if [[ $repo_dir =~ ^\'.*\/$ ]]; then
-     repo_dir=$repo_dir.git
-  else
-     repo_dir=$repo_dir/.git
+  if [[ ! $repo_dir =~ ^\'.*/$ ]]; then
+     repo_dir=$repo_dir/
   fi
-  export GIT_DIR=$repo_dir
+  export GIT_DIR=$repo_dir.git
 }
 
 function revisions {
